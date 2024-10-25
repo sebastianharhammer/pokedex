@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    font-family: "Sofadi One", system-ui;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+.d-none {
+    display: none !important;
+}
+.d-flex {
+    display: flex !important;
+}
+.d-block {
+    display: block !important;
+}
+.width-100 {
+    width: 100%;
+}
+.height-100-vh {
+    height: 100vh !important;
+}

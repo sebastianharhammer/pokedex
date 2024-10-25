@@ -1,0 +1,124 @@
+#search-input-container {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 1vh;
+    z-index: 10;
+}
+#search-input {
+    height: 25px;
+    text-align: center;
+    width: 250px;
+}
+#amount-input {
+    height: 45px;
+    text-align: center;
+    width: 20%;
+}
+.error-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+.card {
+    border: solid 2px black;
+    border-radius: 10px;
+    width: 300px;
+    height: 500px;
+    margin: 25px;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));
+}
+.card:hover {
+    filter: drop-shadow(10px 8px 6px rgba(0, 0, 0, 0.5));
+    cursor: pointer;
+}
+.card-top {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 100px;
+    background-color: rgb(255, 205, 80);
+}
+.pokemon-name {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 18px;
+}
+.pokemon-id {
+    font-weight: 800;
+    font-size: 18px;
+}
+.card-middle {
+    display: flex;
+    justify-content: space-evenly;
+    height: 50px;
+    border: 1px black solid;
+    align-items: center;
+}
+.pokemon-type {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+}
+.pokemon-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(237, 236, 236);
+}
+.pokemon-img {
+    height: 300px;
+    width: 300px;
+}
+.card-bottom {
+    background-color: black;
+    height: 50px;
+}
+#button-add-container {
+    display: flex;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 2vh;
+    width: 60vw;
+    z-index: 10;
+}
+#button-footer-container {
+    position: fixed;
+    bottom: 2vh;
+    right: 2vw;
+    z-index: 10;
+}
+#add-btn {
+    width: 50%;
+    height: 50px;
+    align-self: center;
+    z-index: 10;
+    filter: drop-shadow(2px 4px 2px rgba(128, 128, 128, 0.5));
+}
+#add-btn:hover {
+    cursor: pointer;
+}
+#footer-link {
+    padding: 5px;
+    
+}
+#arrow-icon {
+    transform: rotate(90deg);
+    width: 50px;
+    height: 50px;
+}
+#arrow-icon:hover {
+    cursor: pointer;
+    filter: drop-shadow(2px 4px 2px rgba(128, 128, 128, 0.5));
+}
