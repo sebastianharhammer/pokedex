@@ -6,8 +6,7 @@ let addPokemonHTMLExists = false;
 let addSearchHTMLExists = false;
 let localStorageCounterVar = localStorage.setItem("counterVar", 0);
 let amountInput = document.getElementById('amount-input');
-  if (amountInput) {
-  document.getElementById('amount-input').onchange = function() {addPokemonAmount()};}
+if (amountInput) {document.getElementById('amount-input').onchange = function() {addPokemonAmount()};}
 
 
 function clearContent() {
@@ -26,7 +25,7 @@ function clearStorage() {
 function addPokemonAmount() {
   let amount = document.getElementById('amount-input');
   if (amount.value < 10 || amount.value > 100) {
-    console.log('Only 10 - 100 is allowed');
+    alert('Only 10 - 100 is allowed');
   }
   else {
   counterLimit = amount.value;
@@ -72,13 +71,13 @@ async function getData() {
       throw new Error(`Response status: ${response.status}`);
     }
     const json = await response.json();
-    loadData(json);
+    loadOverlay(json);
   } catch (error) {
     console.error(error.message);
   }
 }
 
-async function loadData(json) {
+async function loadOverlay(json) {
   if (!addSearchHTMLExists) {
     addSearchHTML();
   }
@@ -88,7 +87,27 @@ async function loadData(json) {
   }
 }
 
+
 async function getPokemonForLoop(json) {
+  let allPokemonData = [];
+
+  for (let i = 0; i < json.results.length; i++) {
+    let pokemonData = json.results[i];
+    let response = await fetch(pokemonData.url);
+    let pokemon = await response.json();
+    allPokemonData.push({
+      url: pokemonData.url,
+      data: pokemon
+    });
+  }
+
+  for (let z = 0; z < allPokemonData.length; z++) {
+    let pokemonObject = allPokemonData[z];
+    pokemonHTML(pokemonObject.url, pokemonObject.data);
+  }
+}
+
+/*async function getPokemonForLoop(json) {
   const pokemonPromises = json.results.map(async (pokemonData) => {
     const response = await fetch(pokemonData.url);
     const pokemon = await response.json();
@@ -100,7 +119,7 @@ async function getPokemonForLoop(json) {
   allPokemonData.forEach((pokemonObject) => {
     setTimeout(() => pokemonHTML(pokemonObject.url, pokemonObject.data), 100);
   });
-}
+}*/
 
 async function getPokemon(POKEMON) {
   let response = await fetch(POKEMON);

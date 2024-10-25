@@ -1,73 +1,100 @@
+/* Main container styling */
 #pokemon-big-container {
     display: flex;
     flex-direction: column;
     width: 80vw;
     height: 75vh;
-    border: 3px solid black;
+    border: 3px solid #000;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    overflow: hidden;
 }
+
+/* Main section of the container */
 #pokemon-big-container-main {
     width: 100%;
 }
+
+/* Pokemon container styling */
 .pokemon-container {
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
     height: 50vh;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #000;
+    background-color: #fafafa;
 }
+
+/* Top card styling */
 #card-top-id {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
     height: 20vh;
-    background-color: rgb(255, 205, 80);
-    border-bottom: 2px solid black;
+    background-color: #ffcd50;
+    border-bottom: 2px solid #000;
 }
-#pokemon-name-id {
+
+/* Pokemon name and ID styling */
+#pokemon-name-id, #pokemon-id-id {
     font-size: 24px;
     font-weight: 800;
-    text-transform: uppercase;    
+    text-transform: uppercase; 
+    color: #333;
 }
-#pokemon-id-id {
-    font-size: 24px;
-    font-weight: 800;
-}
+
+/* Pokemon image styling */
 #pokemon-img-id {
     height: 300px;
     width: 300px;
+    object-fit: cover;
 }
+
+/* Weight and height section styling */
 #pokemon-weight-height {
     display: flex;
     justify-content: space-around;
     width: 100%;
     margin-top: 25px;
+    padding: 10px;
+    background-color: #fffcf5;
+    border-top: 2px solid #ccc;
 }
+
 .phys-info {
-    padding: 5px;
-    border: 2px rgb(190, 164, 14) solid;
-    background-color: rgb(250, 213, 2);
+    padding: 8px 12px;
+    border: 2px solid #bea40e;
+    background-color: #fad502;
     font-size: 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #333;
 }
+
+/* Stats container styling */
 #pokemon-stats-container-id {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    margin-left: 2vw;
-    margin-right: 2vw;
+    padding: 0 2vw;
     height: 50vh;
+    background-color: #f0f4f8;
 }
+
+/* Stat bar container styling */
 .pokemon-stat-container {
     width: 100%;
     background-color: #e0e0e0;
     border-radius: 25px;
     margin: 10px 0;
     position: relative;
-    
 }
 
+/* Stat progress line */
 .stat-line {
     height: 20px;
     border-radius: 25px;
@@ -76,52 +103,50 @@
     transition: width 0.5s ease;
 }
 
+/* Stat label styling */
 .stat-label {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 14px;
+    font-weight: bold;
     color: #333;
 }
+
+/* Bottom card section styling */
 #card-bottom-id {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     height: 10vh;
     width: 100%;
+    background-color: #f7f7f7;
+    border-top: 2px solid #000;
 }
+
+/* Info button styling */
 .pokemon-info {
     border: 2px solid lightgrey;
     border-radius: 45px;
-    padding: 5px;
+    padding: 5px 15px;
     font-size: 18px;
+    transition: 250ms;
+    color: #333;
 }
+
 .pokemon-info:hover {
     cursor: pointer;
-    border: 1px solid grey;
+    border-color: grey;
     background-color: lightblue;
-    transition: 250ms;
-}
-#general {
-    z-index: 10;
-}
-#stats {
-    z-index: 10;
-}
-#evolution {
-    z-index: 10;
-}
-.pokemon-stat-container {
-    margin: 10px 0;
 }
 
-.stat-label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
+/* Z-index styling for tab sections */
+#general, #stats, #evolution {
+    z-index: 10;
 }
 
+/* Progress bar styling */
 .progress-bar {
     width: 100%;
     background-color: #e0e0e0;
@@ -137,6 +162,8 @@
     width: 0; 
     transition: width 0.3s ease;
 }
+
+/* Evolution container styling */
 #pokemon-evo-container-id {
     display: flex;
     justify-content: space-evenly;
@@ -144,9 +171,12 @@
     width: 100%;
     height: 50vh;
     background-color: #e0e0e0;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #000;
 }
+
+/* Evolution pokemon image styling */
 .evo-pok {
-    height: 100px;
-    width: 100px;
+    height: 20vh;
+    width: 20vw;
+    object-fit:contain;
 }

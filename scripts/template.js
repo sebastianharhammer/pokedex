@@ -14,7 +14,7 @@ function addFooterHTML() {
     contentId.innerHTML += /*HTML*/`
     <div id="button-add-container">
         <button id="add-btn" onclick="addPokemon()">LOAD ${counterLimit} MORE</button>
-        <input id='amount-input' type="number" min="0" max="100"placeholder="10 - 100" onchange="addPokemonAmount()">
+        <input id='amount-input' type="number" min="0" max="100"placeholder="Choose between 10 - 100 displayed pokemon" onchange="addPokemonAmount()">
     </div>
     <div id="button-footer-container">
         <a id="footer-link" href="#end">
