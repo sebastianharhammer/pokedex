@@ -14,11 +14,10 @@ function addFooterHTML() {
     contentId.innerHTML += /*HTML*/`
     <div id="button-add-container">
         <button id="add-btn" onclick="addPokemon()">LOAD ${counterLimit} MORE</button>
-        <input id='amount-input' type="number" min="0" max="100"placeholder="Choose between 10 - 100 displayed pokemon" onchange="addPokemonAmount()">
     </div>
     <div id="button-footer-container">
         <a id="footer-link" href="#end">
-            <img src="./assets/icons/arrow-right-solid.svg" id="arrow-icon">
+            <img src="./assets/icons/right-arrow-icon.svg" id="arrow-icon">
         </a>
     </div>`;
     addPokemonHTMLExists = true;
@@ -50,20 +49,27 @@ function pokemonHTML(URL, pokemon) {
 }
 
 
-function pokemonGeneralHTML(URL, pokemon) {
+function pokemonGeneralHTML(URL, pokemon, text) {
     const contentId = document.getElementById('content');
+    let pokemonText = "";
     clearContent();
+    for (let lanIndex = 0; lanIndex < text.flavor_text_entries.length; lanIndex++){
+        if (text.flavor_text_entries[lanIndex].language.name === "en") {
+            pokemonText = text.flavor_text_entries[lanIndex].flavor_text;
+        }
+    }
     contentId.innerHTML = /*HTML*/`
     <div id="pokemon-big-container">
         <div id="card-top-id" onclick="getData(), clearContent(), clearStorage()">
             <span id="pokemon-name-id">${pokemon.name}</span>
             <span id="pokemon-id-id">ID: ${pokemon.id}</span>
         </div>
-        <div id="${URL}" class="width-100 d-flex pokemon-container" onclick="getData(), clearContent(), clearStorage()">
+        <div id="${URL}" class="width-100 d-flex pokemon-container">
             <img id="pokemon-img-id" src="${pokemon.sprites.other['official-artwork'].front_default}">
+            <span id="pokemon-text">${pokemonText.replace(/\u000c/g, ' ')}</span>
         </div>
         <div id="pokemon-weight-height">
-                <span class="phys-info" id="pokemon-weight">HEIGHT: ${pokemon.height}cm</span>
+                <span class="phys-info" id="pokemon-weight">HEIGHT: ${pokemon.height*10}cm</span>
                 <span class="phys-info" id="pokemon-height">WEIGHT: ${pokemon.weight/10}kg</span>
             </div>
         <div id="card-bottom-id">
@@ -93,7 +99,7 @@ function pokemonStatsHTML(URL, pokemon) {
                 <span id="pokemon-id-id">ID: ${pokemon.id}</span>
             </div>
             
-            <div id="pokemon-stats-container-id" onclick="getData(), clearContent(), clearStorage()">
+            <div id="pokemon-stats-container-id">
                 <h2>BASE STATS</h2>
                 ${generateStatBar('HP', pokemon.stats[0].base_stat)}
                 ${generateStatBar('Attack', pokemon.stats[1].base_stat)}

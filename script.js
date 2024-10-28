@@ -5,8 +5,7 @@ let counterLimit = 10;
 let addPokemonHTMLExists = false;
 let addSearchHTMLExists = false;
 let localStorageCounterVar = localStorage.setItem("counterVar", 0);
-let amountInput = document.getElementById('amount-input');
-if (amountInput) {document.getElementById('amount-input').onchange = function() {addPokemonAmount()};}
+
 
 
 function clearContent() {
@@ -22,17 +21,6 @@ function clearStorage() {
   counterLimit -= localStorageCounterVar;
 }
 
-function addPokemonAmount() {
-  let amount = document.getElementById('amount-input');
-  if (amount.value < 10 || amount.value > 100) {
-    alert('Only 10 - 100 is allowed');
-  }
-  else {
-  counterLimit = amount.value;
-  clearContent();
-  getData();
-}
-}
 
 
 async function searchPokemon() {
@@ -44,13 +32,12 @@ async function searchPokemon() {
   }
   try {
       const response = await fetch(`${BASE_URL}/${query}`);
-      console.log(response);
       if (!response.ok) {
           throw new Error('Pokémon not found');
       }
       const pokemon = await response.json();
       clearContent();
-      pokemonGeneralHTML(response.url, pokemon);
+     openPokemonGeneral(response.url);
 
   }   catch (error) {
       console.error('Error fetching Pokémon:', error.message);
@@ -107,31 +94,21 @@ async function getPokemonForLoop(json) {
   }
 }
 
-/*async function getPokemonForLoop(json) {
-  const pokemonPromises = json.results.map(async (pokemonData) => {
-    const response = await fetch(pokemonData.url);
-    const pokemon = await response.json();
-    return {url: pokemonData.url, 
-            data: pokemon };
-  });
-  const allPokemonData = await Promise.all(pokemonPromises);
-  allPokemonData.sort((a, b) => a.data.id - b.data.id);
-  allPokemonData.forEach((pokemonObject) => {
-    setTimeout(() => pokemonHTML(pokemonObject.url, pokemonObject.data), 100);
-  });
-}*/
 
 async function getPokemon(POKEMON) {
   let response = await fetch(POKEMON);
   let responseUrl = response.url;
   let responseToJson = await response.json();
-  setTimeout(() => pokemonHTML(responseUrl, responseToJson), 50);
+  setTimeout(() => pokemonHTML(responseUrl, responseToJson,), 50);
 }
 
 async function openPokemonGeneral(pokemonUrl) {
   let response = await fetch(pokemonUrl);
   let responseToJson = await response.json();
-  pokemonGeneralHTML(pokemonUrl, responseToJson);
+  let pokemonTextUrl = responseToJson.species.url;
+  let responsePokemonTextUrl = await fetch(pokemonTextUrl);
+  let responsePokemonTextJson = await responsePokemonTextUrl.json(); 
+  pokemonGeneralHTML(pokemonUrl, responseToJson, responsePokemonTextJson);
 }
 
 async function chooseBackgroundColor(URL) {
@@ -191,18 +168,14 @@ function addPokemon() {
     "CounterLimit ist:" + counterLimit,
     "CounterOffset ist:" + counterOffset
   );
-  getData();
-  setTimeout(() => {
+  getData()
   window.scrollTo({
     top: document.body.scrollHeight,
-      behavior: "smooth",
-    });
-  }, 500);
-  
+      behavior: "smooth"}); 
 }
 
 async function getEvolutionChains(POKEMONURL, POKEMON) {
-  let response = await fetch(EVOLUTION_URL + `?limit=1000&offset=0`);
+  let response = await fetch(EVOLUTION_URL + `?limit=540&offset=0`);
   let responseToJson = await response.json();
   for (let evolutionIndex = 0; evolutionIndex < responseToJson.results.length; evolutionIndex++) {
     let evolutionChain = responseToJson.results[evolutionIndex];
@@ -212,15 +185,14 @@ async function getEvolutionChains(POKEMONURL, POKEMON) {
 
 async function getEvolution(POKEMONURL, POKEMON, URL) {
   let response = await fetch(URL);
-  if (!response.ok) {  
-      throw new Error(`URL not found or invalid (Status: ${response.status})`);
+  if (!response.ok) { 
+    throw new Error(`URL not found or invalid (Status: ${response.status})`);
   }
   let responseToJson = await response.json();
   let firstEvoPokemon = responseToJson.chain.species;
   let secondEvoPokemon = responseToJson.chain.evolves_to.length > 0 ? responseToJson.chain.evolves_to[0].species : null;
   let thirdEvoPokemon = (secondEvoPokemon && responseToJson.chain.evolves_to[0].evolves_to.length > 0) ? responseToJson.chain.evolves_to[0].evolves_to[0].species : null;
-  if (firstEvoPokemon.name === POKEMON.name || (secondEvoPokemon && secondEvoPokemon.name === POKEMON.name) || 
-    (thirdEvoPokemon && thirdEvoPokemon.name === POKEMON.name)) {
+  if (firstEvoPokemon.name === POKEMON.name || (secondEvoPokemon && secondEvoPokemon.name === POKEMON.name) || (thirdEvoPokemon && thirdEvoPokemon.name === POKEMON.name)) {
       let firstEvoPokemonURL = await fetch(`${BASE_URL}/${firstEvoPokemon.name}`);
       let first = await firstEvoPokemonURL.json();
       let second = null;
