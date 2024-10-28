@@ -35,9 +35,8 @@ async function searchPokemon() {
       if (!response.ok) {
           throw new Error('Pokémon not found');
       }
-      const pokemon = await response.json();
       clearContent();
-     openPokemonGeneral(response.url);
+      openPokemonGeneral(response.url);
 
   }   catch (error) {
       console.error('Error fetching Pokémon:', error.message);
@@ -99,7 +98,7 @@ async function getPokemon(POKEMON) {
   let response = await fetch(POKEMON);
   let responseUrl = response.url;
   let responseToJson = await response.json();
-  setTimeout(() => pokemonHTML(responseUrl, responseToJson,), 50);
+  pokemonHTML(responseUrl, responseToJson,);
 }
 
 async function openPokemonGeneral(pokemonUrl) {

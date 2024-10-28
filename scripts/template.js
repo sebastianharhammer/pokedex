@@ -71,11 +71,14 @@ function pokemonGeneralHTML(URL, pokemon, text) {
         <div id="pokemon-weight-height">
                 <span class="phys-info" id="pokemon-weight">HEIGHT: ${pokemon.height*10}cm</span>
                 <span class="phys-info" id="pokemon-height">WEIGHT: ${pokemon.weight/10}kg</span>
-            </div>
+        </div>
         <div id="card-bottom-id">
             <span class="pokemon-info" id="general" onclick="openPokemonGeneral('${URL}')">General</span>
             <span class="pokemon-info"id="stats" onclick="openPokemonStats('${URL}')">Stats</span>
             <span class="pokemon-info" id="evolution" onclick="openPokemonEvolution('${URL}')">Evolution</span>
+        </div>
+        <div id="back-btn-container-big-pokemon">
+            <button id="back-btn-big-pokemon" onclick="getData(), clearContent(), clearStorage()">BACK</button>
         </div>
     </div>`;
     chooseBackgroundColor(URL);
@@ -98,7 +101,6 @@ function pokemonStatsHTML(URL, pokemon) {
                 <span id="pokemon-name-id">${pokemon.name}</span>
                 <span id="pokemon-id-id">ID: ${pokemon.id}</span>
             </div>
-            
             <div id="pokemon-stats-container-id">
                 <h2>BASE STATS</h2>
                 ${generateStatBar('HP', pokemon.stats[0].base_stat)}
@@ -112,6 +114,9 @@ function pokemonStatsHTML(URL, pokemon) {
                 <span class="pokemon-info" id="general" onclick="openPokemonGeneral('${URL}')">General</span>
                 <span class="pokemon-info" id="stats" onclick="openPokemonStats('${URL}')">Stats</span>
                 <span class="pokemon-info" id="evolution" onclick="openPokemonEvolution('${URL}')">Evolution</span>
+            </div>
+            <div id="back-btn-container-big-pokemon">
+            <button id="back-btn-big-pokemon" onclick="getData(), clearContent(), clearStorage()">BACK</button>
             </div>
         </div>`;
 }
@@ -151,6 +156,9 @@ function pokemonEvolutionHTML(URL, pokemon, first, second, third) {
             <span class="pokemon-info" id="general" onclick="openPokemonGeneral('${URL}')">General</span>
             <span class="pokemon-info" id="stats" onclick="openPokemonStats('${URL}')">Stats</span>
             <span class="pokemon-info" id="evolution" onclick="openPokemonEvolution('${URL}')">Evolution</span>
+        </div>
+        <div id="back-btn-container-big-pokemon">
+            <button id="back-btn-big-pokemon" onclick="getData(), clearContent(), clearStorage()">BACK</button>
         </div>
     </div>`;
 }
