@@ -51,7 +51,6 @@
     margin: 10px;
     text-align: center;
     font-weight: 600;
-    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));
 }
 
 #pokemon-weight-height {
@@ -76,7 +75,6 @@
     text-align: center;
 }
 
-/* Stats container styling */
 #pokemon-stats-container-id {
     display: flex;
     flex-direction: column;
@@ -87,7 +85,7 @@
     background-color: #f0f4f8;
 }
 
-/* Stat bar container styling */
+
 .pokemon-stat-container {
     width: 100%;
     background-color: #e0e0e0;
@@ -96,7 +94,7 @@
     position: relative;
 }
 
-/* Stat progress line */
+
 .stat-line {
     height: 20px;
     border-radius: 25px;
@@ -105,7 +103,7 @@
     transition: width 0.5s ease;
 }
 
-/* Stat label styling */
+
 .stat-label {
     position: absolute;
     top: 50%;
@@ -116,7 +114,6 @@
     color: #333;
 }
 
-/* Bottom card section styling */
 #card-bottom-id {
     display: flex;
     justify-content: space-evenly;
@@ -143,12 +140,12 @@
     background-color: lightblue;
 }
 
-/* Z-index styling for tab sections */
+
 #general, #stats, #evolution {
     z-index: 10;
 }
 
-/* Progress bar styling */
+
 .progress-bar {
     width: 100%;
     background-color: #e0e0e0;
@@ -165,7 +162,7 @@
     transition: width 0.3s ease;
 }
 
-/* Evolution container styling */
+
 #pokemon-evo-container-id {
     display: flex;
     justify-content: space-evenly;
@@ -176,7 +173,6 @@
     border-bottom: 2px solid #000;
 }
 
-/* Evolution pokemon image styling */
 .evo-pok {
     height: 20vh;
     width: 20vw;
@@ -196,5 +192,16 @@
     width: 20vw;
     height: 5vw;
     border-radius: 20px;
+    border: 2px solid lightgrey;
+    border-radius: 45px;
+    padding: 5px 15px;
+    font-size: 18px;
+    transition: 250ms;
+    color: #333;
+}
+#back-btn-big-pokemon:hover {
+    cursor: pointer;
+    border-color: grey;
+    background-color: lightblue;
 }
 
