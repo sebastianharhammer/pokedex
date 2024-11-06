@@ -74,9 +74,9 @@
 .pokemon-image-container {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color: rgb(237, 236, 236);
 }
 .pokemon-img {
     height: 300px;
@@ -112,12 +112,15 @@
 }
 #footer-link {
     padding: 5px;
+    transition: 250ms;
+    scroll-behavior: smooth;
     
 }
 #arrow-icon {
     transform: rotate(90deg);
     width: 50px;
     height: 50px;
+    
 }
 #arrow-icon:hover {
     cursor: pointer;

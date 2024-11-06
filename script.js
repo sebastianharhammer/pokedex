@@ -21,17 +21,25 @@ function clearStorage() {
   counterLimit -= localStorageCounterVar;
 }
 
+function hideSecondEvo() {
+  let secondEvo = document.getElementById('second-evo-name');
+  secondEvo.classList.add(d-none);
+}
 
+function hideThirdEvo() {
+  let thirdEvo = document.getElementById('third-evo-name');
+  thirdEvo.classList.add('d-none');
+}
 
 async function searchPokemon() {
-  const query = document.getElementById("search-input").value.toLowerCase();
-  if (query.length === 0) {
+  const search = document.getElementById("search-input").value.toLowerCase();
+  if (search.length === 0) {
       clearContent();
       getData();
       return;   
   }
   try {
-      const response = await fetch(`${BASE_URL}/${query}`);
+      const response = await fetch(`${BASE_URL}/${search}`);
       if (!response.ok) {
           throw new Error('Pokémon not found');
       }
@@ -76,7 +84,7 @@ async function loadOverlay(json) {
 
 async function getPokemonForLoop(json) {
   let allPokemonData = [];
-
+  
   for (let i = 0; i < json.results.length; i++) {
     let pokemonData = json.results[i];
     let response = await fetch(pokemonData.url);
@@ -99,6 +107,15 @@ async function getPokemon(POKEMON) {
   let responseUrl = response.url;
   let responseToJson = await response.json();
   pokemonHTML(responseUrl, responseToJson,);
+}
+
+function setCounter() {
+  if (addPokemonHTMLExists === true) {
+    let localStorageCounterVar = localStorage.getItem("counterVar");
+        localStorageCounterVar = parseInt(localStorageCounterVar);
+        counterLimit = localStorageCounterVar + counterLimit; 
+        counterOffset = 0;
+}
 }
 
 async function openPokemonGeneral(pokemonUrl) {
@@ -163,14 +180,8 @@ function addPokemon() {
   counterOffset += counterLimit;
   localStorageCounterVar += counterLimit;
   localStorage.setItem("counterVar", localStorageCounterVar);
-  console.log(
-    "CounterLimit ist:" + counterLimit,
-    "CounterOffset ist:" + counterOffset
-  );
+  console.log("CounterLimit:" + counterLimit, "||", "CounterOffset:" + counterOffset);
   getData()
-  window.scrollTo({
-    top: document.body.scrollHeight,
-      behavior: "smooth"}); 
 }
 
 async function getEvolutionChains(POKEMONURL, POKEMON) {
