@@ -9,13 +9,19 @@
     <!-- Styles -->
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/types.css">
     <link rel="stylesheet" href="./styles/pokemonBig.css">
+    <link rel="stylesheet" href="./styles/searchError.css">
+    <link rel="stylesheet" href="./styles/loadingPokeball.css">
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/assets/icons/pokemon.png">
+    <link rel="icon" type="image/x-icon" href="./assets/icons/pokemon.svg">
     <title>Pokedex</title>
 </head>
 <body onload="getData()">
     <header></header>
+    <div id="loadingOverlay" class="d-none">
+        <div class="pokeball-spinner"></div>
+    </div>
     <div id="content"></div>
     <div id="end"></div>
     <footer></footer>

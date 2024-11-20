@@ -1,7 +1,9 @@
 #pokemon-big-container {
     display: flex;
     flex-direction: column;
+    align-content: center;
     width: 80vw;
+    max-width: 1000px;
     height: 87vh;
     border: 3px solid #000;
     background-color: #f8f9fa;
@@ -22,7 +24,6 @@
     width: 100%;
     height: 45vh;
     border-bottom: 2px solid #000;
-    background-color: #fafafa;
 }
 
 #card-top-id {
@@ -43,12 +44,38 @@
 }
 
 #pokemon-img-id {
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     object-fit: cover;
+}
+#pokemon-navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 5vh;
+    position: absolute;
+}
+#pokemon-last-button {
+    width: 40px;
+    height: 40px;
+    transform: rotate(180deg);
+    padding-right: 5vw;
+}
+#pokemon-last-button:hover {
+    cursor: pointer;
+}
+#pokemon-next-button {
+    width: 40px;
+    height: 40px;
+    padding-right: 5vw;
+}
+#pokemon-next-button:hover {
+    cursor: pointer;
 }
 #pokemon-text {
     margin: 2px;
+    padding-right: 20px;
+    padding-left: 20px;
     text-align: center;
     font-weight: 600;
 }
@@ -251,10 +278,20 @@
     }
     
 }
+@media (min-height: 1000px) {
+    #pokemon-img-id {
+        height: 300px;
+        width: 300px;
+    }
+}
 
 @media (max-height: 750px) {
     #pokemon-text {
         font-size: 12px;
         font-weight: 600;
+    }
+    .pokemon-evo-name {
+        font-size: 12px;
+    
     }
 }

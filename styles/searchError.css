@@ -1,0 +1,14 @@
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    padding-top: 35vh;
+    padding-bottom: 25vh;
+}
+#search-error-message {
+    font-size: 36px;
+}
+#back-btn-error {
+    padding: 10px;
+}
