@@ -2,6 +2,7 @@ body {
     margin: 0;
     font-family: "Sofadi One", system-ui;
     scroll-behavior: smooth;
+    background-color: rgb(31, 48, 48);
     
     
 }
