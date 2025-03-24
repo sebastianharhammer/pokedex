@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: "Sofadi One", system-ui;
+    font-family: "Winky Sans", system-ui;
     scroll-behavior: smooth;
     background-color: rgb(31, 48, 48);
     
@@ -29,4 +29,9 @@ a:hover {
 }
 .height-100-vh {
     height: 100vh !important;
+}
+
+@font-face {
+    font-family: "Winky Sans";
+    src: url("../assets/fonts/WinkySans.woff2");
 }
